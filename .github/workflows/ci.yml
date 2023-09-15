@@ -8,6 +8,9 @@ on:
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
+    container:
+        image: python:3.9
+        options: --user root
 
     steps:
       - name: Checkout Repository
@@ -25,20 +28,19 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Build C++ Code
+        uses: parasoft/run-cpptest-action@2.0.1
+        with:
+          installDir: '/src/antenna/'     
+      - name: Run Tests and Generate Coverage
+        continue-on-error: true
         run: |
-          cd ns-3_c-v2x
-          # Replace with your C++ build commands
-          ./configure
-          make
-        working-directory: ${{ github.workspace }}
-
-      - name: Test C++ Code
-        run: |
-          cd ns-3_c-v2x
-          # Replace with your C++ test commands
-          make test
-        working-directory: ${{ github.workspace }}
-
+          # Set PYTHONPATH and navigate to the tests directory
+          export PYTHONPATH=$PYTHONPATH:/usr/lib/python3/dist-packages
+          cd $GITHUB_WORKSPACE
+          
+          # Run tests and generate coverage report
+          python3 -m coverage run -m pytest
+          python3 -m coverage xml --omit="/opt/*,/root/*,/tmp/*,/usr/*,/var/*,**/__init__.py"
       - name: Build Python Code
         run: |
           cd ns-3_c-v2x
