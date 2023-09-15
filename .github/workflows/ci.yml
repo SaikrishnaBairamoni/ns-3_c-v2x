@@ -1,0 +1,54 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -qy
+          sudo apt-get install -y build-essential gcc g++ python python3
+          git clone https://github.com/nsnam/ns-3-allinone.git
+          cd ns-3-allinone
+          ./download.py -n ns-3.33
+          cd ns-3.33
+          ./build.py -- --enable-examples --enable-tests
+        working-directory: ${{ github.workspace }}
+
+      - name: Build C++ Code
+        run: |
+          cd ns-3_c-v2x
+          # Replace with your C++ build commands
+          ./configure
+          make
+        working-directory: ${{ github.workspace }}
+
+      - name: Test C++ Code
+        run: |
+          cd ns-3_c-v2x
+          # Replace with your C++ test commands
+          make test
+        working-directory: ${{ github.workspace }}
+
+      - name: Build Python Code
+        run: |
+          cd ns-3_c-v2x
+          # Replace with your Python build commands
+          python setup.py build
+        working-directory: ${{ github.workspace }}
+
+      - name: Test Python Code
+        run: |
+          cd ns-3_c-v2x
+          # Replace with your Python test commands
+          python setup.py test
+        working-directory: ${{ github.workspace }}
