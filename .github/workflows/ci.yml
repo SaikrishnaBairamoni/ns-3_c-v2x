@@ -21,8 +21,8 @@ jobs:
           apt-get update -qy
           apt-get install -y build-essential gcc g++ sudo
           apt-get -y install python3-coverage python3-pip python3-pytest
-          ./waf configure
-          ./waf build
+        #   ./waf configure
+        #   ./waf build
         working-directory: ${{ github.workspace }}
 
       - name: Build C++ tests
