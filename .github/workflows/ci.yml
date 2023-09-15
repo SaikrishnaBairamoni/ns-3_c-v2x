@@ -21,14 +21,11 @@ jobs:
           apt-get update -qy
           apt-get install -y build-essential gcc g++ sudo
           apt-get -y install python3-coverage python3-pip python3-pytest
-          git clone https://github.com/nsnam/ns-3-allinone.git
-          cd ns-3-allinone
-          ./download.py -n ns-3.33
-          cd ns-3.33
-          ./build.py -- --enable-examples --enable-tests
+          ./waf configure
+          ./waf build
         working-directory: ${{ github.workspace }}
 
-      - name: Build C++ Code
+      - name: Build C++ tests
         uses: parasoft/run-cpptest-action@2.0.1
         with:
           installDir: '/src/antenna/'     
