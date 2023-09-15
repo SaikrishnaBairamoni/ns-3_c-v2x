@@ -18,8 +18,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt-get update -qy
-          sudo apt-get install -y build-essential gcc g++ python python3
+          apt-get update -qy
+          apt-get install -y build-essential gcc g++ python python3 sudo
           git clone https://github.com/nsnam/ns-3-allinone.git
           cd ns-3-allinone
           ./download.py -n ns-3.33
