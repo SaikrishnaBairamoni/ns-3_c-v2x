@@ -49,5 +49,7 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
+make 
+sudo make install 
 
 ctest --output-on-failure
