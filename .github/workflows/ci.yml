@@ -12,7 +12,6 @@ jobs:
       image: ubuntu:jammy-20230126
       env:
         DEBIAN_FRONTEND: noninteractive
-        INIT_ENV: "/home/ns-3_c-v2x/.base-image/init-env.sh"
         SONAR_SCANNER_VERSION: "4.6.2.2472"
         TERM: xterm
       options: "--user root"
@@ -59,7 +58,6 @@ jobs:
         echo $SONAR_DIR/build-wrapper >> $GITHUB_PATH
     - name: Build
       run: |
-        source ${INIT_ENV}
         cd /home/ns3_c-v2x/
         ./waf configure
         #build-wrapper-linux-x86-64 --out-dir /home/ns3_c-v2x/bw-output ./waf build
