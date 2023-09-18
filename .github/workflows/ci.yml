@@ -53,13 +53,11 @@ jobs:
          cd $GITHUB_WORKSPACE
          chmod   755  -R /__w/ns-3_c-v2x/ns-3_c-v2x
          export LD_LIBRARY_PATH=/usr/local/lib    
-         #./waf configure
-         #./waf
-         make    
+         make install   
      - name: Test Python Code
        run: |
          cd ${{ github.workspace }}
-         python test.py                   
+         python3 test.py                   
      - name: Archive code coverage results
        uses: actions/upload-artifact@v3 # This action is used to capture the test artifacts and exits if no files are found
        with:
