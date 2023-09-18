@@ -59,7 +59,7 @@ jobs:
     - name: Build
       run: |
         cd /home/ns3_c-v2x/
-        ./waf configure
+        #./waf configure
         #build-wrapper-linux-x86-64 --out-dir /home/ns3_c-v2x/bw-output ./waf build
         build-wrapper-linux-x86-64 --out-dir /home/ns3_c-v2x/bw-output ./build.sh
     - name: Tests

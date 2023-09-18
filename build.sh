@@ -13,8 +13,6 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-# script executes all kafka_clients and scheduling service build and coverage steps so that they can be singularly
-# wrapped by the sonarcloud build-wrapper
 set -e
 
 COVERAGE_FLAGS="-g --coverage -fprofile-arcs -ftest-coverage"
