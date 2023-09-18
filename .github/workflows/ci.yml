@@ -53,8 +53,8 @@ jobs:
          cd $GITHUB_WORKSPACE
          chmod   755  -R /__w/ns-3_c-v2x/ns-3_c-v2x
          export LD_LIBRARY_PATH=/usr/local/lib    
-         ./waf configure
-         ./waf
+         #./waf configure
+         #./waf
          make    
      - name: Test Python Code
        run: |
