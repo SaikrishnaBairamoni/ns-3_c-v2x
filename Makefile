@@ -5,7 +5,8 @@ all:
 
 # free free to change this part to suit your requirements
 clean:
-    ./waf clean
+	python3.6 -x waf clean
+
 configure:
 	python3.6 -x waf configure --enable-examples --enable-tests
 
