@@ -48,6 +48,10 @@ jobs:
          cmake --build _cmake_build --target install  
      - name: Install sonar-scanner and build-wrapper
        uses: SonarSource/sonarcloud-github-c-cpp@v1  # This Action Installs sonar cloud and build wrapper to run sonar scan analysis  
+     - name: Set up Python 3.6
+       uses: actions/setup-python@v2
+       with:
+         python-version: 3.6       
      - name: Build and Generate test coverage
        run: |
          cd $GITHUB_WORKSPACE
