@@ -1,20 +1,20 @@
 # Makefile wrapper for waf
 
 all:
-	./waf
+	python3.6 -x waf
 
 # free free to change this part to suit your requirements
 configure:
-	./waf configure --enable-examples --enable-tests
+	python3.6 -x waf configure --enable-examples --enable-tests
 
 build:
-	./waf build
+	python3.6 -x waf build
 
 install:
-	./waf install
+	python3.6 -x waf install
 
 clean:
-	./waf clean
+	python3.6 -x waf clean
 
 distclean:
-	./waf distclean
+	python3.6 -x waf distclean

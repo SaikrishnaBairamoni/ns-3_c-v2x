@@ -32,24 +32,20 @@ jobs:
          export CXX="g++"          
      - name: Install sonar-scanner and build-wrapper
        uses: SonarSource/sonarcloud-github-c-cpp@v1  # This Action Installs sonar cloud and build wrapper to run sonar scan analysis  
-    #  - name: Set up Python 3.6
-    #    uses: actions/setup-python@v2
-    #    with:
-    #      python-version: 3.6       
      - name: Build and Generate test coverage
        run: |
          cd $GITHUB_WORKSPACE
          chmod   755  -R /__w/ns-3_c-v2x/ns-3_c-v2x
-         python3.6 -x waf configure
-         python3.6 -x waf build
-        #  make configure
-        #  make build   
-        #  make install
-        #  make clean   
+         #python3.6 -x waf configure
+         #python3.6 -x waf build
+         make configure
+         make build   
+         make install
+         make clean   
      - name: Test Python Code
        run: |
-         cd ${{ github.workspace }}
-         python3 test.py                   
+         cd $GITHUB_WORKSPACE
+         python3.6 -x test.py                   
      - name: Archive code coverage results
        uses: actions/upload-artifact@v3 # This action is used to capture the test artifacts and exits if no files are found
        with:
