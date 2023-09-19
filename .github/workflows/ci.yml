@@ -52,11 +52,12 @@ jobs:
        run: |
          cd $GITHUB_WORKSPACE
          chmod   755  -R /__w/ns-3_c-v2x/ns-3_c-v2x
-         export LD_LIBRARY_PATH=/usr/local/lib 
-         make configure
-         make build   
-         make install
-         make clean   
+         python3.6 -x waf configure
+         python3.6 -x waf build
+        #  make configure
+        #  make build   
+        #  make install
+        #  make clean   
      - name: Test Python Code
        run: |
          cd ${{ github.workspace }}
