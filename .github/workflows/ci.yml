@@ -36,10 +36,10 @@ jobs:
        run: |
          cd $GITHUB_WORKSPACE
          chmod   755  -R /__w/ns-3_c-v2x/ns-3_c-v2x
-         #python3.6 -x waf configure
-         #python3.6 -x waf build
-         #python3.6 -x waf --run_tests 
-         make install
+         python3.6 -x waf configure
+         python3.6 -x waf build
+         python3.6 -x waf --run_tests 
+         #make install
      - name: Test Python Code
        run: |
          cd $GITHUB_WORKSPACE
