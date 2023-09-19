@@ -20,12 +20,6 @@ jobs:
          sudo apt-get -y install software-properties-common
          sudo apt-get update -qy
          sudo apt-get install -y build-essential gcc g++
-         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-         sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
-         sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-         chmod +x /usr/local/bin/docker-compose
-         sudo apt-get -y update
-         sudo apt-get -y install docker-ce   
      - name: set up Cmake
        uses: jwlawson/actions-setup-cmake@v1.13  # this action is used to setup and install Cmake with required versions
        with:
