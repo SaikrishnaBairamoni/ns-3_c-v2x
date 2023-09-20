@@ -4,7 +4,7 @@ on:
 
 jobs:
   ns-3_c-v2x:
-   runs-on: ubuntu-latest-8-cores
+   runs-on: ubuntu-latest
    container:
     image: python:3.6
     options: --user root
